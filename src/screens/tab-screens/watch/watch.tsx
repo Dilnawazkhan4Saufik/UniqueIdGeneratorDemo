@@ -88,11 +88,7 @@ export const Watch: FC = () => {
       )}
 
       <FlatList
-        contentContainerStyle={{
-          paddingVertical: 10,
-          alignItems: 'center',
-          backgroundColor: Color.Gray + 30,
-        }}
+        contentContainerStyle={styles.flatList}
         numColumns={2}
         data={genres}
         renderItem={({item, index}) => (
@@ -109,5 +105,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     paddingHorizontal: 20,
     justifyContent: 'space-between',
+  },
+  flatList: {
+    paddingVertical: 10,
+    alignItems: 'center',
+    backgroundColor: Color.Gray + 30,
+    flex: 1,
   },
 });
