@@ -2,6 +2,7 @@ import {Pressable, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {FC} from 'react';
 import {Color} from '../../../../const';
 import {_Text, _VectorIcons, _View} from '../../../../components';
+import {Fonts} from '../../../../const/theme';
 
 interface SearchBarInterface {
   searchQuery: string;
@@ -66,5 +67,6 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '90%',
     marginLeft: 5,
+    fontFamily: Fonts.regular,
   },
 });

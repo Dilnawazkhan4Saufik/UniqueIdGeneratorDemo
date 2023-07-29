@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: ACCESS_TOKEN,
+    Authorization: `Bearer ${ACCESS_TOKEN}`,
   },
 });
 
