@@ -1,16 +1,13 @@
 import axios from 'axios';
-const api_key = 'dffba9561ac155546bdd3246e565be42';
-const ACCESS_TOKEN =
-  'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZmZiYTk1NjFhYzE1NTU0NmJkZDMyNDZlNTY1YmU0MiIsInN1YiI6IjY0YzUzOWFmY2FkYjZiMDEwNjZjZDg3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GUaGt11MNr3niLtvA0EkLsM-GZff4bL8NNmNxjkLeZM';
 
-const BASE_URL = 'https://api.themoviedb.org';
+const BASE_URL = 'https://api.themoviedb.org/3/';
+const API_KEY = 'dffba9561ac155546bdd3246e565be42';
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${ACCESS_TOKEN}`,
   },
 });
 
@@ -26,7 +23,7 @@ const handleError = (error: any) => {
   throw error;
 };
 
-export const Get = async (url: string, params = {api_key}) => {
+export const Get = async (url: string, params = {api_key: API_KEY}) => {
   try {
     const response = await axiosInstance.get(url, {params});
     return handleResponse(response);

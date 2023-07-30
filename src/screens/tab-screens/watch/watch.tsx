@@ -9,64 +9,25 @@ import {
 } from '../../../components';
 import {Color} from '../../../const';
 import {Fonts} from '../../../const/theme';
+import {ApiEndPoints, Get} from '../../../services';
 import {Card, FlatlistHeader, Header, SearchBar} from './components';
+const imgBaseUrl = 'https://image.tmdb.org/t/p/original';
 
 export const Watch: FC = () => {
   const [isSearchEnabled, setIsSearchEnabled] = useState(false);
   const [numColumns, setNumColumns] = useState(1);
   const [searchQuery, setSearchQuery] = useState('');
-  const genres = [
-    {
-      id: 1,
-      name: 'Comedies',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 2,
-      name: 'Crime',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 3,
-      name: 'Family',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 4,
-      name: 'Documentaries',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 5,
-      name: 'Dramas',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 6,
-      name: 'Fantasy',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 7,
-      name: 'Holidays',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 8,
-      name: 'Horror',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 9,
-      name: 'Sci-Fi',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-    {
-      id: 10,
-      name: 'Thriller',
-      thumbnail: 'https://picsum.photos/200/300/?blur',
-    },
-  ];
+  const [list, setList] = useState<any>([]);
+
+  const fetchData = () => {
+    Get(ApiEndPoints.getUpcomingMovie).then((res: any) => {
+      if (res) setList(res?.results);
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const handleSearch = () => {
     setNumColumns(2);
@@ -81,12 +42,13 @@ export const Watch: FC = () => {
 
   const handleSearchQuery = (value: string) => {
     setSearchQuery(value);
-    if (searchQuery.length > 0) {
+    if (value.length > 0) {
       setNumColumns(1);
     } else {
       setNumColumns(2);
     }
   };
+
   return (
     <_Screen background={<Background color={Color.Negative} />} hideTopSafeArea>
       {isSearchEnabled ? (
@@ -103,11 +65,11 @@ export const Watch: FC = () => {
         key={numColumns}
         showsVerticalScrollIndicator={false}
         numColumns={numColumns}
-        data={genres}
+        data={list}
         renderItem={({item, index}) => (
           <Card
-            title={item.name}
-            backgroundPic={item.thumbnail}
+            title={item.title}
+            backgroundPic={imgBaseUrl + item.poster_path}
             isSearchEnabled={isSearchEnabled}
             searchQuery={searchQuery}
           />
@@ -118,7 +80,6 @@ export const Watch: FC = () => {
             searchQuery={searchQuery}
           />
         }
-        ItemSeparatorComponent={() => <View style={{height: 20}} />}
         ListFooterComponent={() => <View style={{height: 80}} />}
       />
     </_Screen>

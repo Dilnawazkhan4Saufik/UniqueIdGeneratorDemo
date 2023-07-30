@@ -21,7 +21,7 @@ const SearchBar: FC<SearchBarInterface> = ({
       style={styles.container}>
       <_View style={styles.subContainer}>
         <_VectorIcons
-          type="Fontisto"
+          type="Octicons"
           name="search"
           size={15}
           color={Color.black}

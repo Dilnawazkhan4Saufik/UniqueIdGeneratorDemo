@@ -1,4 +1,5 @@
-import React, {FC, JSX} from 'react';
+import React, {FC} from 'react';
+import {Color} from '../const';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
@@ -15,145 +16,193 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import Zocial from 'react-native-vector-icons/Zocial';
 import Octicons from 'react-native-vector-icons/Octicons';
 
-interface VectorIconsInterfaces {
-  type: string;
+interface Props {
+  type?: string;
   name: string;
   size?: number;
   color?: string;
   style?: any;
+  onPress?: () => void;
 }
-
-interface VectorIconsList {
-  [key: string]: JSX.Element;
-}
-
-export const _VectorIcons: FC<VectorIconsInterfaces> = ({
+export const _VectorIcons: FC<Props> = ({
   type,
   name,
   size,
   color,
+  style,
+  onPress,
   ...props
 }) => {
-  const VectorIconsList: VectorIconsList = {
-    Octicons: (
-      <Octicons
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    Zocial: (
-      <Zocial
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    Foundation: (
-      <Foundation
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    SimpleLineIcons: (
-      <SimpleLineIcons
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    MaterialCommunityIcons: (
-      <MaterialCommunityIcons
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    AntDesign: (
-      <AntDesignIcon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    Entypo: (
-      <EntypoIcon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    EvilIcons: (
-      <EvilIconsIcon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    Feather: (
-      <FeatherIcon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    FontAwesome: (
-      <FontAwesomeIcon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    FontAwesome5: (
-      <FontAwesome5Icon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    FontAwesome5Pro: (
-      <FontAwesome5ProIcon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    Fontisto: (
-      <FontistoIcon name={name} size={size || 16} color={color || '#fff'} />
-    ),
-    MaterialIcons: (
-      <MaterialIcon
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-    Ionicons: (
-      <Ionicons
-        name={name}
-        size={size || 16}
-        color={color || '#fff'}
-        {...props}
-      />
-    ),
-  };
-
-  if (Object.keys(VectorIconsList).includes(type)) {
-    return VectorIconsList[type];
-  } else
-    return <Ionicons name={name} size={size || 16} color={color || '#fff'} />;
+  switch (type) {
+    case 'Octicons':
+      return (
+        <Octicons
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'Zocial':
+      return (
+        <Zocial
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'Foundation':
+      return (
+        <Foundation
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'SimpleLineIcons':
+      return (
+        <SimpleLineIcons
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'MaterialCommunityIcons':
+      return (
+        <MaterialCommunityIcons
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'AntDesign':
+      return (
+        <AntDesignIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'Entypo':
+      return (
+        <EntypoIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'EvilIcons':
+      return (
+        <EvilIconsIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'Feather':
+      return (
+        <FeatherIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'FontAwesome':
+      return (
+        <FontAwesomeIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'FontAwesome5':
+      return (
+        <FontAwesome5Icon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'FontAwesome5Pro':
+      return (
+        <FontAwesome5ProIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'Fontisto':
+      return (
+        <FontistoIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'Material':
+    case 'MaterialIcons':
+      return (
+        <MaterialIcon
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    case 'Ionicons':
+      return (
+        <Ionicons
+          name={name}
+          size={size || 16}
+          color={color || Color.White}
+          style={style}
+          onPress={onPress}
+          {...props}
+        />
+      );
+    default:
+      return (
+        <Ionicons name={name} size={size || 16} color={color || Color.White} />
+      );
+  }
 };

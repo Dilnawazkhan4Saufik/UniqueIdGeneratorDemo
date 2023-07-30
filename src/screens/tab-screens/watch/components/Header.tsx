@@ -17,7 +17,7 @@ const Header: FC<HeaderPropsInteface> = ({handleSearch}) => {
       </_Text>
       <Pressable onPress={handleSearch}>
         <_VectorIcons
-          type="Fontisto"
+          type="MaterialIcons"
           name="search"
           size={20}
           color={Color.black}
@@ -32,7 +32,6 @@ export {Header};
 const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
-
     justifyContent: 'space-between',
   },
 });
