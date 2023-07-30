@@ -7,5 +7,5 @@ interface Props {
 }
 
 export const Background: React.FC<Props> = ({color}) => (
-  <_View flex={1} style={{backgroundColor: Color.PrimaryLight}} />
+  <_View flex={1} style={{backgroundColor: color || Color.PrimaryLight}} />
 );
