@@ -81,7 +81,7 @@ export const Watch: FC = () => {
     setSearchQuery(value);
     if (value.length > 0) {
       let filteredData = searchData.filter(movie =>
-        movie.title.toLowerCase().includes(searchQuery.toLowerCase()),
+        movie.title.toLowerCase().includes(value.toLowerCase()),
       );
       setList(filteredData);
       setNumColumns(1);
@@ -119,6 +119,7 @@ export const Watch: FC = () => {
           <FlatlistHeader
             isSearchEnabled={isSearchEnabled}
             searchQuery={searchQuery}
+            numberOfResult={list.length}
           />
         }
         ListFooterComponent={() => <View style={{height: 80}} />}

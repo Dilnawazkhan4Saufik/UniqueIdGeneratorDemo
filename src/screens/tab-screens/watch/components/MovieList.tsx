@@ -21,7 +21,7 @@ const MovieList: FC<MovieListInterface> = ({title, backgroundPic}) => {
       <_VectorIcons
         type="MaterialCommunityIcons"
         name="dots-horizontal"
-        size={18}
+        size={24}
         color={Color.Secondary}
       />
     </View>

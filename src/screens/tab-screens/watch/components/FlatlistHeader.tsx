@@ -6,15 +6,22 @@ import {Fonts} from '../../../../const/theme';
 interface FlatlistHeaderInterface {
   isSearchEnabled: boolean;
   searchQuery: string;
+  numberOfResult: number;
 }
 
 const FlatlistHeader: FC<FlatlistHeaderInterface> = ({
   isSearchEnabled,
   searchQuery,
+  numberOfResult,
 }) => {
   return isSearchEnabled && searchQuery.length > 0 ? (
     <View style={styles.container}>
-      <Text style={styles.txt}>Top Results</Text>
+      <Text style={styles.txt}>
+        Top Results
+        {searchQuery.length > 1 && (
+          <Text style={styles.txt}>{`\t${numberOfResult} Found`}</Text>
+        )}
+      </Text>
     </View>
   ) : null;
 };
